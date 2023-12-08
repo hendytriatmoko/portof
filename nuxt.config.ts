@@ -5,6 +5,9 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
+  plugins: [
+    { src: '~/plugins/aos', mode: 'client' },
+  ],
   css: ['@/assets/style.css'],
   modules: [
     (_options, nuxt) => {
@@ -13,6 +16,7 @@ export default defineNuxtConfig({
         config.plugins.push(vuetify({ autoImport: true }))
       })
     },
+    // 'nuxt-aos'
     //...
   ],
   vite: {

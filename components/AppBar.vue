@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar color="black">
+    <v-app-bar v-if="!$vuetify.display.mobile" color="black">
       <div
         class="d-flex justify-space-between mx-4 align-center"
         style="width: 100%"
@@ -52,6 +52,61 @@
         </div>
       </div>
     </v-app-bar>
+    <div v-else>
+      <v-app-bar app clipped-left color="black">
+        <div
+          style="width: 100vw"
+          class="mx-1 mr-2 d-flex align-center justify-space-between"
+        >
+          <div
+            style="
+              font-weight: bold;
+              font-size: 20px;
+              font-family: 'Courier New', monospace;
+            "
+          >
+            <v-icon color="green">mdi-account-tie</v-icon>
+            HENDY
+          </div>
+          <div class="d-flex justify-end">
+            <a class="mx-1" href="https://www.instagram.com/hendytriatmoko">
+              <v-icon color="white">mdi-instagram</v-icon>
+            </a>
+            <a
+              class="mx-1"
+              href="https://www.linkedin.com/in/hendi-triatmoko-25b03a146/"
+            >
+              <v-icon color="white">mdi-linkedin</v-icon>
+            </a>
+            <a
+              class="mx-1"
+              href="https://www.facebook.com/profile.php?id=100004885547228&locale=id_ID"
+            >
+              <v-icon color="white">mdi-facebook</v-icon>
+            </a>
+            <a class="mx-1" href="https://wa.me/6282111239208">
+              <v-icon color="white">mdi-whatsapp</v-icon>
+            </a>
+          </div>
+        </div>
+      </v-app-bar>
+      <v-app-bar color="black">
+        <div
+          style="width: 100vw"
+          class="mx-2 d-flex align-center justify-space-between"
+        >
+          <div
+            v-for="item in menu"
+            :key="item.nama"
+            @click="$emit('scrollToSection', item.id)"
+          >
+            <div :style="item.id == dataSeksion ? 'color:green' : ''">
+              {{ item.nama }}
+            </div>
+          </div>
+        </div>
+      </v-app-bar>
+    </div>
   </div>
 </template>
 
